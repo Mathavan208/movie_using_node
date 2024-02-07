@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Movie Genres</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 60px;
+            
+            background-image: url('/images/image.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .card {
+            width: 300px; /* Set the fixed width of the card */
+            height: 400px; /* Set the fixed height of the card */
+            margin-bottom: 20px; /* Add margin to create space between cards */
+        }
+
+        .card-img-top {
+            height: 200px; /* Set the fixed height of the card image */
+            object-fit: cover; /* Maintain aspect ratio and cover the entire space */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/">Movie Genres</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/insert">Insert</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/update">Update</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/delete">Delete</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- Main Content -->
+<div class="container">
+    <h1 style="color:white"><%=genr[0].genre %> movies</h1>
+    <div class="row">
+        
+        <br>
+        <% for(let i =0;i<genr.length;i++){ %> 
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <img src="data:<%= genr[i].image.contentType %>;base64,<%= genr[i].image.data.toString('base64') %>" class="card-img-top" alt="Movie Image">
+
+                    <h5 class="card-title"><%=genr[i].name%></h5>
+                    <p class="card-text"><%=genr[i].genre%></p>
+                    <p class="card-text"><%=genr[i].rating%></p>
+                </div>
+            </div>
+        </div>
+        <% } %>
+        <!-- Add more cards for additional movies -->
+    </div>
+</div>
+
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
